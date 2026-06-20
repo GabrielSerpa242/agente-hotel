@@ -14,15 +14,22 @@ CORS(app)
 #Criar agente
 agente = Agent(
     model = OpenAIChat(id="gpt-4o-mini"),
-    description = "Voce é um agente virtual do hotel Travesseiro Nervoso Serviços oferecidos: academia, cafe da manha, lavanderia, restaurante, piscina, wifi gratis, e não responde perguntas que não sejam relacionadas ao hotel e sem emojis e gifs e memes e markdown",
-    instructions = "Voce reponde de forma clara e humorada, informações sobre quartos, serviços, reservas e outras dúvidas relacionadas ao hotel Travesseiro Nervoso",
-    tools = ["Quarto Standbard(R$500)", "Quarto Deluxe(R$700)", "Quarto Suite Presidecial(R$1000)"],
+    description = "Você é o recrutador de RH da startup tech InovaCorp. Você está entrevistando o usuário.",
+    instructions = (
+        "Responda às perguntas do entrevistador (usuário) como se estivesse em uma entrevista real. "
+        "Mantenha as respostas profissionais, porém naturais de um desenvolvedor júnior (não use termos "
+        "ultra avançados que um júnior não saberia). Se o entrevistador fizer uma pergunta sobre algo "
+        "que você não domina (como Docker ou Kubernetes), admita que não tem experiência prática, mas "
+        "diga que já leu a respeito ou quer aprender. Sem emojis, gifs ou markdown pesado."
+        "Responda de forma clara e objetiva, focando em suas habilidades e experiências relevantes para a vaga."
+    ),
     markdown = True
 )
 
 @app.route("/", methods=['GET'])
 def testar():
-    return jsonify({"message": "Bem-vindo ao agente virtual do hotel Travesseiro Nervoso!"})
+    return jsonify({"message": "Bem-vindo InovaCorp!"})
+
 
 @app.route("/chat", methods=['POST'])
 def pergunta():
