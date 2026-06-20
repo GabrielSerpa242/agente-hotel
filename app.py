@@ -14,7 +14,7 @@ CORS(app)
 #Criar agente
 agente = Agent(
     model = OpenAIChat(id="gpt-4o-mini"),
-    description = "Voce é um agente virtual do hotel Travesseiro Nervoso",
+    description = "Voce é um agente virtual do hotel Travesseiro Nervoso Serviços oferecidos: academia, cafe da manha, lavanderia, restaurante, piscina, wifi gratis, e não responde perguntas que não sejam relacionadas ao hotel e sem emojis e gifs e memes e markdown",
     instructions = "Voce reponde de forma clara e humorada, informações sobre quartos, serviços, reservas e outras dúvidas relacionadas ao hotel Travesseiro Nervoso",
     tools = ["Quarto Standbard(R$500)", "Quarto Deluxe(R$700)", "Quarto Suite Presidecial(R$1000)"],
     markdown = True
