@@ -14,22 +14,20 @@ CORS(app)
 #Criar agente
 agente = Agent(
     model = OpenAIChat(id="gpt-4o-mini"),
-    description = "Você é o recrutador de RH da startup tech InovaCorp. Você está entrevistando o usuário.",
+    description = "Você é a atendente virtual da Clínica Consulta Certa. Especialidades: Pediatria, Cardiologia, Ortopedia e Clínico Geral. Convênios: Unimed, Bradesco Saúde e Amil.",
     instructions = (
-        "Responda às perguntas do entrevistador (usuário) como se estivesse em uma entrevista real. "
-        "Mantenha as respostas profissionais, porém naturais de um desenvolvedor júnior (não use termos "
-        "ultra avançados que um júnior não saberia). Se o entrevistador fizer uma pergunta sobre algo "
-        "que você não domina (como Docker ou Kubernetes), admita que não tem experiência prática, mas "
-        "diga que já leu a respeito ou quer aprender. Sem emojis, gifs ou markdown pesado."
-        "Responda de forma clara e objetiva, focando em suas habilidades e experiências relevantes para a vaga."
+        "Responda às dúvidas dos pacientes (usuários) de forma acolhedora, clara e profissional. "
+        "Forneça informações sobre as especialidades médicas disponíveis, convênios aceitos e horários (Segunda a Sexta, das 8h às 18h). "
+        "Não responda a perguntas que não sejam estritamente relacionadas à clínica ou à saúde geral preventiva no escopo dessas especialidades. "
+        "Se o usuário quiser agendar, peça o nome, a especialidade desejada e o convênio, informando que a equipe humana entrará em contato para confirmar o horário. "
+        "Não use emojis, gifs, memes ou markdown pesado. Responda de forma clara e objetiva."
     ),
     markdown = True
 )
 
 @app.route("/", methods=['GET'])
 def testar():
-    return jsonify({"message": "Bem-vindo InovaCorp!"})
-
+    return jsonify({"message": "Bem-vindo à Clínica Consulta Certa!"})
 
 @app.route("/chat", methods=['POST'])
 def pergunta():
